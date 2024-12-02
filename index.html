@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">Online Store</div>
+        <div class="top-buttons">
+            <button onclick="openPopup('login-popup')">Login</button>
+            <button onclick="openPopup('registration-popup')">Registration</button>
+            <button>Contact Us</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="image-slider">
+            <img src="image1.jpg" alt="Image 1">
+            <img src="image2.jpg" alt="Image 2">
+            <img src="image3.jpg" alt="Image 3">
+        </div>
+        <div class="categories">
+            <div class="category">
+                <button onclick="location.href='wheelchairs.html'">
+                    <img src="category1.jpg" alt="Wheel Chairs">
+                </button>
+                <a href="wheelchairs.html">Wheel Chairs</a>
+            </div>
+            <div class="category">
+                <button onclick="location.href='orthopedic-support.html'">
+                    <img src="category2.jpg" alt="Orthopedic Support">
+                </button>
+                <a href="orthopedic-support.html">Orthopedic Support</a>
+            </div>
+            <div class="category">
+                <button onclick="location.href='beds-and-bedding.html'">
+                    <img src="category3.jpg" alt="Beds and Bedding">
+                </button>
+                <a href="beds-and-bedding.html">Beds and Bedding</a>
+            </div>
+            <div class="category">
+                <button onclick="location.href='medical-monitoring-devices.html'">
+                    <img src="category4.jpg" alt="Medical Monitoring Devices">
+                </button>
+                <a href="medical-monitoring-devices.html">Medical Monitoring Devices</a>
+            </div>
+            <div class="category">
+                <button onclick="location.href='respiratory-aids.html'">
+                    <img src="category5.jpg" alt="Respiratory Aids">
+                </button>
+                <a href="respiratory-aids.html">Respiratory Aids</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="address">
+                <h3>Address</h3>
+                <p>Institute Code: 01, Established in 1986</p>
+                <p>Bhilai House, Durg, Chhattisgarh - 491001</p>
+                <p>Email: bit@bitdurg.ac.in</p>
+                <p>Phone: 0788-2359297</p>
+                <p>Fax: +91 0788-2359263</p>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © BIT DURG | Website Design & Maintain by Ayodhya Webosoft</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Disclaimer</a> | <a href="#">Terms and Conditions</a> | <a href="#">Hyperlink Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Registration Popup -->
+    <div class="popup" id="registration-popup">
+        <div class="popup-content">
+            <h2>Registration</h2>
+            <form id="registration-form">
+                <label for="first-name">First Name <span class="required">*</span></label>
+                <input type="text" id="first-name" placeholder="First Name" required>
+                <span id="first-name-error" class="error-message"></span>
+
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" placeholder="Last Name">
+                <span id="last-name-error" class="error-message"></span>
+
+                <label for="user-id">User ID <span class="required">*</span></label>
+                <input type="text" id="user-id" placeholder="User ID" required>
+                <span id="user-id-error" class="error-message"></span>
+
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" placeholder="Email" required>
+                <span id="email-error" class="error-message"></span>
+
+                <label for="password">Password <span class="required">*</span></label>
+                <input type="password" id="password" placeholder="Password" required>
+                <span id="password-error" class="error-message"></span>
+
+                <label for="confirm-password">Confirm Password <span class="required">*</span></label>
+                <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+                <span id="confirm-password-error" class="error-message"></span>
+
+                <label for="contact">Contact Number <span class="required">*</span></label>
+                <select id="country-code" required>
+                    <option value="+1">+1 (USA)</option>
+                    <option value="+91">+91 (India)</option>
+                    <!-- Add more country options as needed -->
+                </select>
+                <input type="tel" id="contact" placeholder="Contact Number" maxlength="10" required>
+                <span id="contact-error" class="error-message"></span>
+
+                <div class="popup-buttons">
+                    <button type="button" onclick="saveData()">Register</button>
+                    <button type="button" onclick="closePopup('registration-popup')">Back</button>
+                    <button type="reset">Clear All</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login Popup -->
+    <div class="popup" id="login-popup">
+        <div class="popup-content">
+            <h2>Login</h2>
+            <form id="login-form">
+                <input type="text" id="login-user-id" placeholder="User ID" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <div class="popup-buttons">
+                    <button type="button" onclick="login()">Login</button>
+                    <button type="button" onclick="closePopup('login-popup')">Cancel</button>
+                </div>
+                <a href="#" onclick="openPopup('forgot-password-popup')">Forgot Password?</a>
+            </form>
+        </div>
+    </div>
+
+    <!-- Forgot Password Popup -->
+    <div class="popup" id="forgot-password-popup">
+        <div class="popup-content">
+            <h2>Forgot Password</h2>
+            <form id="forgot-password-form">
+                <input type="email" id="forgot-email" placeholder="Enter your email" required>
+                <button type="button" onclick="sendOTP()">Send OTP</button>
+                <p id="otp-message"></p>
+                <input type="text" id="otp" placeholder="Enter OTP" required>
+                <div class="popup-buttons">
+                    <button type="button" onclick="submitOTP()">Submit</button>
+                    <button type="button" onclick="closePopup('forgot-password-popup'); openPopup('login-popup')">Back</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,110 +1,85 @@
-function openPopup(popupId) {
-    document.getElementById(popupId).style.display = 'flex';
-}
-
-function closePopup(popupId) {
-    document.getElementById(popupId).style.display = 'none';
-}
-
-function saveData() {
-    // Perform validation and save data logic
-    const firstName = document.getElementById('first-name').value;
-    const lastName = document.getElementById('last-name').value;
-    const userId = document.getElementById('user-id').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirm-password').value;
-    const contact = document.getElementById('contact').value;
-
+function validateRegistration() {
     let valid = true;
 
-    // Validation for first name
-    if (firstName.trim() === '') {
-        document.getElementById('first-name-error').textContent = 'First name is required';
+    const firstName = document.getElementById("first-name").value.trim();
+    const userId = document.getElementById("user-id").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirmPassword = document.getElementById("confirm-password").value.trim();
+    const contact = document.getElementById("contact").value.trim();
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    // Validate First Name
+    if (!firstName) {
+        document.getElementById("first-name-error").textContent = "First Name is required.";
         valid = false;
     } else {
-        document.getElementById('first-name-error').textContent = '';
+        document.getElementById("first-name-error").textContent = "";
     }
 
-    // Validation for user ID
-    if (userId.trim() === '') {
-        document.getElementById('user-id-error').textContent = 'User ID is required';
+    // Validate User ID
+    if (!userId) {
+        document.getElementById("user-id-error").textContent = "User ID is required.";
         valid = false;
     } else {
-        document.getElementById('user-id-error').textContent = '';
+        document.getElementById("user-id-error").textContent = "";
     }
 
-    // Validation for email
-    if (email.trim() === '') {
-        document.getElementById('email-error').textContent = 'Email is required';
+    // Validate Email
+    if (!emailPattern.test(email)) {
+        document.getElementById("email-error").textContent = "Invalid email format.";
         valid = false;
     } else {
-        document.getElementById('email-error').textContent = '';
+        document.getElementById("email-error").textContent = "";
     }
 
-    // Validation for password
-    if (password.trim() === '') {
-        document.getElementById('password-error').textContent = 'Password is required';
+    // Validate Password
+    if (!passwordPattern.test(password)) {
+        document.getElementById("password-error").textContent =
+            "Password must be 8 characters long and include an uppercase letter, a lowercase letter, a digit, and a special character.";
         valid = false;
     } else {
-        document.getElementById('password-error').textContent = '';
+        document.getElementById("password-error").textContent = "";
     }
 
-    // Confirm Password validation
-    if (confirmPassword.trim() === '') {
-        document.getElementById('confirm-password-error').textContent = 'Confirm Password is required';
-        valid = false;
-    } else if (confirmPassword !== password) {
-        document.getElementById('confirm-password-error').textContent = 'Passwords do not match';
+    // Validate Confirm Password
+    if (confirmPassword !== password) {
+        document.getElementById("confirm-password-error").textContent = "Passwords do not match.";
         valid = false;
     } else {
-        document.getElementById('confirm-password-error').textContent = '';
+        document.getElementById("confirm-password-error").textContent = "";
     }
 
-    // Validation for contact
-    if (contact.trim() === '') {
-        document.getElementById('contact-error').textContent = 'Contact is required';
+    // Validate Contact
+    if (!/^\d{10}$/.test(contact)) {
+        document.getElementById("contact-error").textContent = "Contact number must be exactly 10 digits.";
         valid = false;
     } else {
-        document.getElementById('contact-error').textContent = '';
+        document.getElementById("contact-error").textContent = "";
     }
 
-    if (valid) {
-        alert('Registration successful!');
-        closePopup('registration-popup');
-    }
+    return valid;
 }
 
-function login() {
-    const userId = document.getElementById('login-user-id').value;
-    const password = document.getElementById('login-password').value;
+function openPopup(id) {
+    document.getElementById(id).style.display = "flex";
+}
 
-    if (userId.trim() === '' || password.trim() === '') {
-        alert('Please enter both User ID and Password');
-    } else {
-        alert('Login successful!');
-        closePopup('login-popup');
-    }
+function closePopup(id) {
+    document.getElementById(id).style.display = "none";
 }
 
 function sendOTP() {
-    const email = document.getElementById('forgot-email').value;
-
-    if (email.trim() === '') {
-        alert('Please enter your email');
+    const email = document.getElementById("forgot-email").value.trim();
+    if (!email) {
+        alert("Please enter your email.");
     } else {
-        document.getElementById('otp-message').textContent = 'OTP sent to ' + email;
+        document.getElementById("otp-message").textContent = `OTP has been sent to ${email}`;
     }
 }
 
 function submitOTP() {
-    const otp = document.getElementById('otp').value;
-
-    if (otp.trim() === '') {
-        alert('Please enter OTP');
-    } else {
-        alert('OTP verified!');
-        closePopup('forgot-password-popup');
-        openPopup('login-popup');
-    }
+    alert("OTP Submitted!");
 }

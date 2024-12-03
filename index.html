@@ -3,149 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Store</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <title>Online Store</title>
 </head>
 <body>
     <header>
         <div class="logo">Online Store</div>
         <div class="top-buttons">
             <button onclick="openPopup('login-popup')">Login</button>
-            <button onclick="openPopup('registration-popup')">Registration</button>
-            <button>Contact Us</button>
+            <button onclick="openPopup('registration-popup')">Register</button>
+            <button onclick="openPopup('contact-popup')">Contact Us</button>
         </div>
     </header>
-
     <main>
         <div class="slider">
-            <img src="image1.jpg" alt="Slider Image 1">
-            <img src="image2.jpg" alt="Slider Image 2">
+            <img src="https://via.placeholder.com/1500x300" alt="Slider Image">
         </div>
-
         <div class="categories">
             <div class="category">
-                <img src="wheelchair.png" alt="Wheel Chairs">
+                <a href="wheelchairs.html"><img src="https://via.placeholder.com/150" alt="Wheel Chairs"></a>
                 <a href="wheelchairs.html">Wheel Chairs</a>
             </div>
             <div class="category">
-                <img src="orthopedic.jpg" alt="Orthopedic Support">
+                <a href="orthopedic.html"><img src="https://via.placeholder.com/150" alt="Orthopedic Support"></a>
                 <a href="orthopedic.html">Orthopedic Support</a>
             </div>
             <div class="category">
-                <img src="beds.jpg" alt="Beds and Bedding">
+                <a href="beds.html"><img src="https://via.placeholder.com/150" alt="Beds and Bedding"></a>
                 <a href="beds.html">Beds and Bedding</a>
             </div>
             <div class="category">
-                <img src="monitoring.jpg" alt="Medical Monitoring Devices">
+                <a href="monitoring.html"><img src="https://via.placeholder.com/150" alt="Medical Monitoring"></a>
                 <a href="monitoring.html">Medical Monitoring Devices</a>
             </div>
             <div class="category">
-                <img src="respiratory.jpg" alt="Respiratory Aids">
+                <a href="respiratory.html"><img src="https://via.placeholder.com/150" alt="Respiratory Aids"></a>
                 <a href="respiratory.html">Respiratory Aids</a>
             </div>
         </div>
     </main>
-
     <footer>
-        <div class="footer-top">
-            <h3>Contact Us</h3>
-            <p>123 Medical Supplies Lane, Health City</p>
-            <p>Email: contact@onlinestore.com</p>
-            <p>Phone: +1-234-567-8901</p>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Online Store. All rights reserved.</p>
-        </div>
+        <div class="footer-top">Contact us at: support@onlinestore.com</div>
+        <div class="footer-bottom">© 2024 Online Store. All rights reserved.</div>
     </footer>
 
-    <!-- Registration Popup -->
-    <div class="popup" id="registration-popup">
+    <!-- Login Popup -->
+    <div id="login-popup" class="popup">
         <div class="popup-content">
-            <h2>Registration</h2>
-            <form id="registration-form">
-                <label for="first-name">First Name <span class="required">*</span></label>
-                <input type="text" id="first-name">
-                <span class="error-message" id="first-name-error"></span>
-
-                <label for="last-name">Last Name</label>
-                <input type="text" id="last-name">
-
-                <label for="user-id">User ID <span class="required">*</span></label>
-                <input type="text" id="user-id">
-                <span class="error-message" id="user-id-error"></span>
-
-                <label for="email">Email <span class="required">*</span></label>
-                <input type="email" id="email">
-                <span class="error-message" id="email-error"></span>
-
-                <label for="password">Password <span class="required">*</span></label>
-                <input type="password" id="password">
-                <span class="error-message" id="password-error"></span>
-
-                <label for="confirm-password">Confirm Password <span class="required">*</span></label>
-                <input type="password" id="confirm-password">
-                <span class="error-message" id="confirm-password-error"></span>
-
-                <label for="contact">Contact Number <span class="required">*</span></label>
-                <div class="contact-field">
-                    <select id="country-code">
-                        <option value="+1">+1 (USA)</option>
-                        <option value="+91">+91 (India)</option>
-                        <option value="+44">+44 (UK)</option>
-                        <option value="+61">+61 (Australia)</option>
-                        <option value="+81">+81 (Japan)</option>
-                        <option value="+86">+86 (China)</option>
-                        <option value="+49">+49 (Germany)</option>
-                        <option value="+33">+33 (France)</option>
-                        <option value="+7">+7 (Russia)</option>
-                        <option value="+34">+34 (Spain)</option>
-                        <!-- Add more country codes if required -->
-                    </select>
-                    <input type="text" id="contact">
-                </div>
-                <span class="error-message" id="contact-error"></span>
-
-                <div class="buttons">
-                    <button type="button" onclick="validateRegistration()">Register</button>
-                    <button type="button" onclick="closePopup('registration-popup')">Back</button>
-                    <button type="reset">Clear All</button>
-                </div>
-            </form>
+            <h2>Login</h2>
+            <label for="login-user-id">User ID <span class="required">*</span></label>
+            <input type="text" id="login-user-id">
+            <div class="error-message" id="login-user-id-error"></div>
+            <label for="login-password">Password <span class="required">*</span></label>
+            <input type="password" id="login-password">
+            <div class="error-message" id="login-password-error"></div>
+            <button onclick="validateLogin()">Login</button>
+            <a onclick="openPopup('forgot-password-popup'); closePopup('login-popup')">Forgot Password?</a>
+            <button onclick="closePopup('login-popup')">Cancel</button>
         </div>
     </div>
 
-    <!-- Login Popup -->
-    <div class="popup" id="login-popup">
+    <!-- Registration Popup -->
+    <div id="registration-popup" class="popup">
         <div class="popup-content">
-            <h2>Login</h2>
-            <form id="login-form">
-                <label for="login-user-id">User ID</label>
-                <input type="text" id="login-user-id">
-                <label for="login-password">Password</label>
-                <input type="password" id="login-password">
-                <button type="button" onclick="login()">Login</button>
-                <button type="button" onclick="closePopup('login-popup')">Cancel</button>
-                <a href="#" onclick="openPopup('forgot-password-popup'); closePopup('login-popup')">Forgot Password?</a>
-            </form>
+            <h2>Register</h2>
+            <label for="first-name">First Name <span class="required">*</span></label>
+            <input type="text" id="first-name">
+            <div class="error-message" id="first-name-error"></div>
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name">
+            <label for="user-id">User ID <span class="required">*</span></label>
+            <input type="text" id="user-id">
+            <div class="error-message" id="user-id-error"></div>
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email">
+            <div class="error-message" id="email-error"></div>
+            <label for="password">Password <span class="required">*</span></label>
+            <input type="password" id="password">
+            <div class="error-message" id="password-error"></div>
+            <label for="confirm-password">Confirm Password <span class="required">*</span></label>
+            <input type="password" id="confirm-password">
+            <div class="error-message" id="confirm-password-error"></div>
+            <label for="contact-number">Contact Number <span class="required">*</span></label>
+            <div class="contact-field">
+                <select id="country-code">
+                    <option value="+1">+1 (USA)</option>
+                    <option value="+91">+91 (India)</option>
+                    <!-- Add more country codes -->
+                </select>
+                <input type="text" id="contact-number">
+            </div>
+            <div class="error-message" id="contact-error"></div>
+            <div class="buttons">
+                <button onclick="validateRegistration()">Register</button>
+                <button onclick="clearRegistration()">Clear All</button>
+                <button onclick="closePopup('registration-popup')">Back</button>
+            </div>
         </div>
     </div>
 
     <!-- Forgot Password Popup -->
-    <div class="popup" id="forgot-password-popup">
+    <div id="forgot-password-popup" class="popup">
         <div class="popup-content">
             <h2>Forgot Password</h2>
-            <form id="forgot-password-form">
-                <label for="forgot-email">Email</label>
-                <input type="email" id="forgot-email">
-                <button type="button" onclick="sendOTP()">Send OTP</button>
-                <p id="otp-message"></p>
-                <label for="otp">Enter OTP</label>
-                <input type="text" id="otp">
-                <button type="button" onclick="submitOTP()">Submit</button>
-                <button type="button" onclick="openPopup('login-popup'); closePopup('forgot-password-popup')">Back</button>
-            </form>
+            <label for="forgot-email">Email <span class="required">*</span></label>
+            <input type="email" id="forgot-email">
+            <div class="error-message" id="forgot-email-error"></div>
+            <button onclick="sendOTP()">Send OTP</button>
+            <a onclick="closePopup('forgot-password-popup'); openPopup('login-popup')">Back</a>
+            <label for="otp">Enter OTP</label>
+            <input type="text" id="otp">
+            <button onclick="submitOTP()">Submit</button>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

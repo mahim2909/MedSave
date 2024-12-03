@@ -60,7 +60,18 @@ main {
     width: 100%;
     max-width: 150px;
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+.category a {
+    text-decoration: none;
+    color: #004080;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.category a:hover {
+    color: #0066cc;
 }
 
 footer {
@@ -121,80 +132,35 @@ footer .footer-bottom {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 14px;
 }
 
-.popup-content .contact-field {
-    display: flex;
-    gap: 5px;
-}
-
-.popup-content .contact-field select {
-    flex: 1;
-    max-width: 80px;
-}
-
-.popup-content .contact-field input {
-    flex: 3;
-}
-
-.popup-content button {
-    background-color: #004080;
-    color: white;
-    border: none;
+.popup-content .buttons button {
+    margin: 5px 0;
     padding: 10px 15px;
+    border: none;
+    background-color: #0066cc;
+    color: white;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
 }
 
-.popup-content button:hover {
-    background-color: #003060;
+.popup-content .buttons button:hover {
+    background-color: #004080;
 }
 
-.popup-content .buttons {
-    display: flex;
-    justify-content: space-between;
+.error-message {
+    font-size: 12px;
+    color: red;
+    margin-top: -10px;
+    margin-bottom: 10px;
 }
 
-.popup-content a {
-    color: #004080;
-    font-size: 14px;
-    text-decoration: underline;
-    cursor: pointer;
-    display: inline-block;
-    margin-top: 10px;
-}
-
-.popup-content a:hover {
-    color: #003060;
-}
-
-/* Mandatory Asterisk */
 .required {
     color: red;
-    margin-left: 5px;
+    font-size: 14px;
 }
 
-/* Error Messages */
-.error-message {
-    color: red;
-    font-size: 12px;
-    margin: -5px 0 10px 0;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-    header .logo {
-        font-size: 20px;
-    }
-
-    header .top-buttons button {
-        padding: 8px 10px;
-        font-size: 14px;
-    }
-
-    .popup-content {
-        width: 90%;
-    }
+/* Align category links to center */
+.category {
+    text-align: center;
 }

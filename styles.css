@@ -170,17 +170,17 @@ footer .footer-bottom {
     color: #003060;
 }
 
-/* Error Message */
+/* Mandatory Asterisk */
+.required {
+    color: red;
+    margin-left: 5px;
+}
+
+/* Error Messages */
 .error-message {
     color: red;
     font-size: 12px;
     margin: -5px 0 10px 0;
-}
-
-/* Scrolling Content for Reduced Popup Height */
-.popup-content {
-    max-height: 80%;
-    overflow-y: auto;
 }
 
 /* Responsive Design */

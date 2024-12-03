@@ -11,7 +11,7 @@ function validateRegistration() {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-    // Validate First Name
+    // First name validation
     if (!firstName) {
         document.getElementById("first-name-error").textContent = "First Name is required.";
         valid = false;
@@ -19,7 +19,7 @@ function validateRegistration() {
         document.getElementById("first-name-error").textContent = "";
     }
 
-    // Validate User ID
+    // User ID validation
     if (!userId) {
         document.getElementById("user-id-error").textContent = "User ID is required.";
         valid = false;
@@ -27,7 +27,7 @@ function validateRegistration() {
         document.getElementById("user-id-error").textContent = "";
     }
 
-    // Validate Email
+    // Email validation
     if (!emailPattern.test(email)) {
         document.getElementById("email-error").textContent = "Invalid email format.";
         valid = false;
@@ -35,32 +35,48 @@ function validateRegistration() {
         document.getElementById("email-error").textContent = "";
     }
 
-    // Validate Password
+    // Password validation
     if (!passwordPattern.test(password)) {
-        document.getElementById("password-error").textContent =
-            "Password must be 8 characters long and include an uppercase letter, a lowercase letter, a digit, and a special character.";
+        document.getElementById("password-error").textContent = "Password must include uppercase, lowercase, digit, and special character.";
         valid = false;
     } else {
         document.getElementById("password-error").textContent = "";
     }
 
-    // Validate Confirm Password
-    if (confirmPassword !== password) {
+    // Confirm password validation
+    if (password !== confirmPassword) {
         document.getElementById("confirm-password-error").textContent = "Passwords do not match.";
         valid = false;
     } else {
         document.getElementById("confirm-password-error").textContent = "";
     }
 
-    // Validate Contact
-    if (!/^\d{10}$/.test(contact)) {
-        document.getElementById("contact-error").textContent = "Contact number must be exactly 10 digits.";
+    // Contact number validation
+    if (contact.length !== 10 || isNaN(contact)) {
+        document.getElementById("contact-error").textContent = "Contact number must be 10 digits.";
         valid = false;
     } else {
         document.getElementById("contact-error").textContent = "";
     }
 
-    return valid;
+    if (valid) {
+        alert("Registration successful!");
+        closePopup("registration-popup");
+    }
+}
+
+function sendOTP() {
+    const email = document.getElementById("forgot-email").value.trim();
+    if (!email) {
+        document.getElementById("otp-message").textContent = "Please enter a valid email to send OTP.";
+    } else {
+        document.getElementById("otp-message").textContent = `OTP has been sent to ${email}`;
+    }
+}
+
+function submitOTP() {
+    alert("OTP verified successfully.");
+    closePopup("forgot-password-popup");
 }
 
 function openPopup(id) {
@@ -69,17 +85,4 @@ function openPopup(id) {
 
 function closePopup(id) {
     document.getElementById(id).style.display = "none";
-}
-
-function sendOTP() {
-    const email = document.getElementById("forgot-email").value.trim();
-    if (!email) {
-        alert("Please enter your email.");
-    } else {
-        document.getElementById("otp-message").textContent = `OTP has been sent to ${email}`;
-    }
-}
-
-function submitOTP() {
-    alert("OTP Submitted!");
 }

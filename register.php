@@ -49,6 +49,17 @@ if (!ctype_digit($userId)) {
     die("<h1>User ID must be numeric.</h1>");
 }
 
+// Check if userId already exists in the database
+$stmt = $con->prepare("SELECT userId FROM user WHERE userId = ?");
+$stmt->bind_param("s", $userId);
+$stmt->execute();
+$result = $stmt->get_result();
+
+// If the userId already exists, show an error message
+if ($result->num_rows > 0) {
+    die("<h1>User ID is already taken. Please choose another one.</h1>");
+}
+
 // Hash the password for security
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 

@@ -7,6 +7,28 @@ function openPopup(id) {
 function closePopup(id) {
     document.getElementById(id).style.display = "none";
 }
+// Function to check if username is unique
+function checkUsernameUnique(username) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "check_username.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+
+            if (response.exists) {
+                document.getElementById("user-id-error").textContent = "Username is already taken.";
+                document.getElementById("user-id").classList.add("error-input");
+            } else {
+                document.getElementById("user-id-error").textContent = "";
+                document.getElementById("user-id").classList.remove("error-input");
+            }
+        }
+    };
+
+    xhr.send("username=" + username);
+}
 
 // Function to validate registration
 function validateRegistration() {
@@ -39,6 +61,9 @@ function validateRegistration() {
     } else {
         document.getElementById("user-id-error").textContent = "";
     }
+
+    // Check for unique username using AJAX
+    checkUsernameUnique(userId);  // This will check asynchronously, but validation will still proceed
 
     // Email validation
     if (!emailPattern.test(email)) {
@@ -75,6 +100,7 @@ function validateRegistration() {
     // Return the validation result to allow form submission
     return valid; // Prevent form submission if validation fails
 }
+
 
 // Function to clear all registration fields
 function clearRegistration() {

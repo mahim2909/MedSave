@@ -28,11 +28,12 @@ function validateLogin() {
         document.getElementById("login-password-error").textContent = "";
     }
 
+    // Only submit the form if validation passes
     if (valid) {
-        alert("Login successful!");
-        closePopup("login-popup");
+        document.getElementById("login-form").submit();
     }
 }
+
 
 // Function to validate registration
 function validateRegistration() {
@@ -42,10 +43,12 @@ function validateRegistration() {
     const password = document.getElementById("password").value.trim();
     const confirmPassword = document.getElementById("confirm-password").value.trim();
     const contact = document.getElementById("contact-number").value.trim();
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple email regex
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // Password must meet complexity requirements
     let valid = true;
 
+    // First Name validation
     if (!firstName) {
         document.getElementById("first-name-error").textContent = "First Name is required.";
         valid = false;
@@ -53,6 +56,7 @@ function validateRegistration() {
         document.getElementById("first-name-error").textContent = "";
     }
 
+    // User ID validation
     if (!userId) {
         document.getElementById("user-id-error").textContent = "User ID is required.";
         valid = false;
@@ -60,6 +64,7 @@ function validateRegistration() {
         document.getElementById("user-id-error").textContent = "";
     }
 
+    // Email validation
     if (!emailPattern.test(email)) {
         document.getElementById("email-error").textContent = "Invalid email format.";
         valid = false;
@@ -67,6 +72,7 @@ function validateRegistration() {
         document.getElementById("email-error").textContent = "";
     }
 
+    // Password validation
     if (!passwordPattern.test(password)) {
         document.getElementById("password-error").textContent = "Password must include uppercase, lowercase, digit, and special character.";
         valid = false;
@@ -74,6 +80,7 @@ function validateRegistration() {
         document.getElementById("password-error").textContent = "";
     }
 
+    // Confirm Password validation
     if (password !== confirmPassword) {
         document.getElementById("confirm-password-error").textContent = "Passwords do not match.";
         valid = false;
@@ -81,6 +88,7 @@ function validateRegistration() {
         document.getElementById("confirm-password-error").textContent = "";
     }
 
+    // Contact Number validation
     if (contact.length !== 10 || isNaN(contact)) {
         document.getElementById("contact-error").textContent = "Contact number must be 10 digits.";
         valid = false;
@@ -88,11 +96,9 @@ function validateRegistration() {
         document.getElementById("contact-error").textContent = "";
     }
 
-    if (valid) {
-        alert("Registration successful!");
-        closePopup("registration-popup");
-    }
+    return valid; // Prevent form submission if validation fails
 }
+
 
 // Function to send OTP for forgot password
 function sendOTP() {
@@ -127,3 +133,4 @@ function clearRegistration() {
     document.getElementById("confirm-password-error").textContent = "";
     document.getElementById("contact-error").textContent = "";
 }
+

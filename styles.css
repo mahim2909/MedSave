@@ -164,3 +164,18 @@ footer .footer-bottom {
 .category {
     text-align: center;
 }
+/*registration footer*/
+.registration-footer {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.registration-footer a {
+    color: #0066cc;
+    font-weight: bold;
+}
+
+.registration-footer a:hover {
+    color: #004080;
+}
+

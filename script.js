@@ -8,33 +8,6 @@ function closePopup(id) {
     document.getElementById(id).style.display = "none";
 }
 
-// Function to validate login
-function validateLogin() {
-    const userId = document.getElementById("login-user-id").value.trim();
-    const password = document.getElementById("login-password").value.trim();
-    let valid = true;
-
-    if (!userId) {
-        document.getElementById("login-user-id-error").textContent = "User ID is required.";
-        valid = false;
-    } else {
-        document.getElementById("login-user-id-error").textContent = "";
-    }
-
-    if (!password) {
-        document.getElementById("login-password-error").textContent = "Password is required.";
-        valid = false;
-    } else {
-        document.getElementById("login-password-error").textContent = "";
-    }
-
-    // Only submit the form if validation passes
-    if (valid) {
-        document.getElementById("login-form").submit();
-    }
-}
-
-
 // Function to validate registration
 function validateRegistration() {
     const firstName = document.getElementById("first-name").value.trim();
@@ -56,9 +29,12 @@ function validateRegistration() {
         document.getElementById("first-name-error").textContent = "";
     }
 
-    // User ID validation
+    // User ID validation (must be numeric)
     if (!userId) {
         document.getElementById("user-id-error").textContent = "User ID is required.";
+        valid = false;
+    } else if (!/^\d+$/.test(userId)) {
+        document.getElementById("user-id-error").textContent = "User ID must be numeric.";
         valid = false;
     } else {
         document.getElementById("user-id-error").textContent = "";
@@ -96,25 +72,8 @@ function validateRegistration() {
         document.getElementById("contact-error").textContent = "";
     }
 
+    // Return the validation result to allow form submission
     return valid; // Prevent form submission if validation fails
-}
-
-
-// Function to send OTP for forgot password
-function sendOTP() {
-    const email = document.getElementById("forgot-email").value.trim();
-    if (!email) {
-        document.getElementById("forgot-email-error").textContent = "Email is required.";
-    } else {
-        document.getElementById("forgot-email-error").textContent = "";
-        document.getElementById("otp-message").textContent = `OTP has been sent to ${email}`;
-    }
-}
-
-// Function to handle OTP submission
-function submitOTP() {
-    alert("OTP verified successfully.");
-    closePopup("forgot-password-popup");
 }
 
 // Function to clear all registration fields
@@ -133,4 +92,3 @@ function clearRegistration() {
     document.getElementById("confirm-password-error").textContent = "";
     document.getElementById("contact-error").textContent = "";
 }
-

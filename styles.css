@@ -178,4 +178,13 @@ footer .footer-bottom {
 .registration-footer a:hover {
     color: #004080;
 }
-
+.styled-box {
+    background-color: #004080; /* Dark blue color */
+    color: white; /* White font color */
+    border-radius: 15px; /* Curved edges */
+    padding: 20px 40px; /* Top/Bottom padding: 20px, Left/Right padding: 40px */
+    margin: 30px auto; /* Center align with margin */
+    max-width: 800px; /* Limit width to make it more centered */
+    text-align: center; /* Center-align text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for visual depth */
+}

@@ -53,11 +53,12 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: none;
+    opacity: 0; /* Make all images initially invisible */
+    transition: opacity 1s ease-in-out; /* Smooth fade effect */
 }
 
-.slider .slide:first-child {
-    display: block;
+.slider .slide.active {
+    opacity: 1; /* Show the active slide */
 }
 
 .categories {

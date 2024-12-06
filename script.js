@@ -1,24 +1,3 @@
-let currentIndex = 0;
-const slides = document.querySelectorAll('.slider .slide');
-const totalSlides = slides.length;
-
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-    });
-}
-
-function startSlider() {
-    setInterval(() => {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        showSlide(currentIndex);
-    }, 3000); // Change slide every 3 seconds
-}
-
-// Initialize the slider
-showSlide(currentIndex);
-startSlider();
-
 // Function to open a popup
 function openPopup(id) {
     document.getElementById(id).style.display = "flex";

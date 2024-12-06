@@ -202,7 +202,7 @@ footer .footer-bottom {
 
 /* Hyperlink Styling */
 .contact-box a {
-    color: white; /* White hyperlinks */
+    color: #0047ab; /* White hyperlinks */
     text-decoration: none; /* Remove underline */
 }
 

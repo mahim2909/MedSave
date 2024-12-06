@@ -178,13 +178,34 @@ footer .footer-bottom {
 .registration-footer a:hover {
     color: #004080;
 }
+/* About Us Styling */
 .styled-box {
     background-color: #004080; /* Dark blue color */
-    color: white; /* White font color */
+    color: white; /* White text */
     border-radius: 15px; /* Curved edges */
-    padding: 20px 40px; /* Top/Bottom padding: 20px, Left/Right padding: 40px */
-    margin: 30px auto; /* Center align with margin */
-    max-width: 800px; /* Limit width to make it more centered */
+    padding: 20px 40px; /* Padding for spacing */
+    margin: 30px auto; /* Center alignment */
+    max-width: 800px; /* Limit width */
     text-align: center; /* Center-align text */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for visual depth */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+}
+
+/* Contact Us Styling */
+.contact-box {
+    background-color: rgba(128, 128, 128, 0.7); /* Medium-opacity gray */
+    border-radius: 10px; /* Curved edges */
+    padding: 15px; /* Inner padding */
+    margin: 20px auto; /* Space inside the box */
+    text-align: center; /* Align text to the center */
+    color: white; /* Inherit text color */
+}
+
+/* Hyperlink Styling */
+.contact-box a {
+    color: white; /* White hyperlinks */
+    text-decoration: none; /* Remove underline */
+}
+
+.contact-box a:hover {
+    text-decoration: underline; /* Underline on hover */
 }

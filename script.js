@@ -4,7 +4,7 @@ const totalSlides = slides.length;
 
 function showSlide(index) {
     slides.forEach((slide, i) => {
-        slide.style.display = i === index ? 'block' : 'none';
+        slide.classList.toggle('active', i === index);
     });
 }
 
@@ -15,7 +15,7 @@ function startSlider() {
     }, 3000); // Change slide every 3 seconds
 }
 
-// Initialize slider
+// Initialize the slider
 showSlide(currentIndex);
 startSlider();
 

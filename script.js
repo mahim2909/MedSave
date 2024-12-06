@@ -7,6 +7,9 @@ function openPopup(id) {
 function closePopup(id) {
     document.getElementById(id).style.display = "none";
 }
+function scrollToSection(sectionId) {
+    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+}
 // Function to check if username is unique
 function checkUsernameUnique(username) {
     const xhr = new XMLHttpRequest();
